@@ -12,11 +12,10 @@ import java.util.*;
  * Записать эти данные в виде HTML документа в таблицу. */
 public class HTML {
 
-    public static void main(String[] args) throws IOException, FileNotFoundException {
+    public static void main(String[] args) throws IOException {
 
         List<String> list = new ArrayList<String>();
-        Path path = Paths.get(System.getProperty("user.dir"));
-        System.out.println("Текущий каталог: " + path);
+        Path path = Paths.get(System.getProperty("user.dir"));//System.out.println("Текущий каталог: " + path);
         File[] files = new File(path.toString()).listFiles();
         for (File file : files) {
             Path path1 = file.toPath();
@@ -45,6 +44,7 @@ public class HTML {
                         "</tr>");
             }
         }
+        /*C этого места начинается запись в строк в файл.*/
         Path pathHTML = Paths.get(path.toString()+"//HTMLTable.html");
         File fileHTML = new File(pathHTML.toString());
         BufferedWriter bfw = new BufferedWriter(new FileWriter(fileHTML));
@@ -102,5 +102,4 @@ public class HTML {
         }
         return size;
     }
-
 }
