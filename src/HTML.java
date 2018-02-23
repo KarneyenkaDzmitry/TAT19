@@ -14,8 +14,9 @@ public class HTML {
 
     public static void main(String[] args) throws IOException {
 
-        List<String> list = new ArrayList<String>();
-        Path path = Paths.get(System.getProperty("user.dir"));//System.out.println("Текущий каталог: " + path);
+        List<String> list = new ArrayList<>();
+        Path path = Paths.get(System.getProperty("user.dir"));
+        System.out.println("Текущий каталог: " + path);
         File[] files = new File(path.toString()).listFiles();
         for (File file : files) {
             Path path1 = file.toPath();
@@ -71,8 +72,8 @@ public class HTML {
     }
     /*Данный метод проходит по дереву и находит все файлы во входной директории.
     * Возвращает размер директории в байтах.*/
-    public static long getDirSize(String root) throws IOException {
-        List<String> listResults = new ArrayList<String>();
+    private static long getDirSize(String root) throws IOException {
+        List<String> listResults = new ArrayList<>();
         Queue<String> queue = new ArrayDeque<>();
         queue.add(root);
         while (true) {

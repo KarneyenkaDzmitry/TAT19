@@ -1,18 +1,18 @@
 public class Rand {
     public static void main(String[] args) {
         String help = "Put amount of digits of random number as the first parameter.\n" +
-                "The number have to be positive integer.";
+                "The number have to be positive Long.";
         if (args.length > 0) {
-            int amountOfDigits = 0;
+            long amountOfDigits = 0;
             try {
-                amountOfDigits = Integer.parseInt(args[0]);
+                amountOfDigits = Long.parseLong(args[0]);
             } catch (NumberFormatException e) {
                 System.out.println("Number format is wrong!");
                 System.out.println(help);
                 System.exit(1);
             }
             if (amountOfDigits > 0) {
-                long randomNumber = Rand.RandomIntegerNumber(amountOfDigits);
+                String randomNumber = Rand.RandomStringNumber(amountOfDigits);
                 System.out.println("Random number: " + randomNumber);
             } else {
                 System.out.println(help);
@@ -22,9 +22,14 @@ public class Rand {
         }
     }
 
-    public static long RandomIntegerNumber(int number) {
-        long randomNumber = (long) (Math.random() * Math.pow(10, number));
-        return randomNumber;
+    private static String RandomStringNumber(long number) {
+        StringBuilder builder = new StringBuilder();
+        for (long i = number / 9; i > 0; i--) {
+            builder.append((long) (Math.random() * Math.pow(10, 9)));
+            builder.append(".");
+        }
+        builder.append((long) (Math.random() * Math.pow(10, number % 9)));
+        return builder.toString();
     }
 }
 
