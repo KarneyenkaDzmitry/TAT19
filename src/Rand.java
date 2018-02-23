@@ -25,8 +25,7 @@ public class Rand {
     private static String RandomStringNumber(long number) {
         StringBuilder builder = new StringBuilder();
         for (long i = number / 9; i > 0; i--) {
-            builder.append((long) (Math.random() * Math.pow(10, 9)));
-            builder.append(".");
+            builder.append((long) (Math.random() * (Math.pow(10, 9) + 1)));
         }
         builder.append((long) (Math.random() * Math.pow(10, number % 9)));
         return builder.toString();
